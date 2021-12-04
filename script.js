@@ -5,9 +5,16 @@ function generatePassword() {
   var charUpper = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
   var charLower = "abcdefghijklmnopqrstuvwxyz";
   var charNumeric = "0123456789";
-  var charSpecial = "!@#$%^&*()?";
+  var charSpecial = "!@#$%^&*()?{}[]";
   var criteriaSet = " ";
   var response = true;
+  var passwordChar = " "
+
+  var passwordLength = window.prompt("Please enter the length of the password.");
+  if (passwordLength < 8 || passwordLength > 128) {
+    window.alert("Please enter a new value.");
+  }
+
   response = window.confirm("would you like to include Uppercase characters?");
   if (response === false) {
      window.alert("Uppercase characters are not require.");
@@ -33,17 +40,17 @@ function generatePassword() {
     window.alert("Special characters are not require.");
   } else {
     criteriaSet += charSpecial;
+  } 
+ 
+  console.log(criteriaSet);
+  if (criteriaSet === " ") {
+    window.alert("You must select characters to be included.Please try again");
   }
 
-  console.log(criteriaSet);
-
-  // length = window.prompt("Please enter the length of the password.");
-  // if (length < 8 || length > 128) {
-  //   window.alert("Please enter a new value.");
-  // }
-     
-     
-  
+for (i=0; i < passwordLength; i++) {
+  passwordChar += criteriaSet[Math.floor(Math.random()*criteriaSet.length)];
+}
+ console.log(passwordChar); 
 }
 // Write password to the #password input
 function writePassword() {
