@@ -1,5 +1,6 @@
 // Assignment Code
 var generateBtn = document.querySelector("#generate");
+//function starts process for generating the password
 function generatePassword() {
   var charUpper = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
   var charLower = "abcdefghijklmnopqrstuvwxyz";
@@ -10,20 +11,20 @@ function generatePassword() {
   var password=" ";
   var passwordLength;
   askLength();
-  function askLength() {
+  function askLength() { //request user to enter the required length of the password 
     passwordLength= window.prompt("Please enter the length of your password. Enter a number between 8 and 128.");
     if (passwordLength < 8 || passwordLength > 128) {
       window.alert("Please enter a new value. Ensure the value is between 8 and 128.");
       askLength();
     }
   }
-
+ //prompt user to select the character types using boolean variable response to hold false if user does chooses to not include a character set
   response = window.confirm("Would you like to include Uppercase characters?");
   if (response === false) {
      window.alert("You have chosen not to include Uppercase characters.");
     
-  } else {
-    passwordChars += charUpper;
+  } else {  // passwordChars holds the user chosen set of characters to be included
+    passwordChars += charUpper; // concatonates the charater set chosen by the user creating the 
   }
   response = window.confirm("Would you like to include Lowercase characters?");
   if (response === false) {
@@ -46,7 +47,7 @@ function generatePassword() {
   } else {
     passwordChars += charSpecial;
   } 
- 
+ // checks that the user has selected characters sets to use for generating the password
   if (passwordChars === "") {
     window.alert("You have not select any characters to be included in your password. Please try again.");
     generatePassword();
