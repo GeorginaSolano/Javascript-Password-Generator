@@ -7,6 +7,8 @@ character types required to be included.
 
 Included is the link to the Password Generator:
 
+https://georginasolano.github.io/Javascript-Password-Generator/
+
 In order to achieve the working code, this includes an addEventListener which calls the functions which generated the password when the user clicks the button.
 
 Though the use of Prompts the user indicated the :
