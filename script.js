@@ -1,62 +1,60 @@
 // Assignment Code
 var generateBtn = document.querySelector("#generate");
 function generatePassword() {
-  console.log("You clicked the button");
   var charUpper = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
   var charLower = "abcdefghijklmnopqrstuvwxyz";
   var charNumeric = "0123456789";
   var charSpecial = "!@#$%^&*()?{}[]";
-  var passwordChars = " ";
+  var passwordChars = "";
   var response = true;
-  var password = " ";
+  var password=" ";
   var passwordLength;
   askLength();
   function askLength() {
-    passwordLength= window.prompt("Please enter the length of the password.");
+    passwordLength= window.prompt("Please enter the length of your password. Enter a number between 8 and 128.");
     if (passwordLength < 8 || passwordLength > 128) {
-      window.alert("Please enter a new value.");
+      window.alert("Please enter a new value. Ensure the value is between 8 and 128.");
       askLength();
     }
   }
-  
 
-  response = window.confirm("would you like to include Uppercase characters?");
+  response = window.confirm("Would you like to include Uppercase characters?");
   if (response === false) {
-     window.alert("Uppercase characters are not require.");
+     window.alert("You have chosen not to include Uppercase characters.");
     
   } else {
     passwordChars += charUpper;
   }
   response = window.confirm("Would you like to include Lowercase characters?");
   if (response === false) {
-    window.alert("Lowercase characters are not require.");
+    window.alert("You have chosen not to include Lowercase characters.");
 
   } else {
     passwordChars += charLower;
   }
+
   response = window.confirm("Would you like to include Numeric characters?");
   if (response === false) {
-    window.alert("Numeric characters are not require.");
+    window.alert("You have chosen not to include numeric characters.");
   } else {
     passwordChars += charNumeric;
   }
+
   response = window.confirm("Would you like to include special characters?");
   if (response === false) {
-    window.alert("Special characters are not require.");
+    window.alert("You have chosen not to include numeric characters.");
   } else {
     passwordChars += charSpecial;
   } 
  
-  console.log(passwordChars);
-  if (passwordChars === " ") {
-    window.alert("You must select characters to be included.Please try again");
+  if (passwordChars === "") {
+    window.alert("You have not select any characters to be included in your password. Please try again.");
     generatePassword();
   }
 
 for (i=0; i < passwordLength; i++) {
   password += passwordChars[Math.floor(Math.random()*passwordChars.length)];
 }
- console.log(password); 
  return password;
 }
 // Write password to the #password input
@@ -65,7 +63,6 @@ function writePassword() {
   var passwordText = document.querySelector("#password");
 
   passwordText.value = password;
-  
 }
 
 // Add event listener to generate button
